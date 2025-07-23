@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bennu - Smart Academic Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: 59 130 246; /* Blue-500 */
+            --secondary: 16 185 129; /* Emerald-500 */
+            --accent: 249 115 22; /* Orange-500 */
+            --neutral: 55 65 81; /* Gray-700 */
+            --base-100: 255 255 255; /* White */
+            --base-200: 249 250 251; /* Gray-50 */
+            --base-300: 229 231 235; /* Gray-200 */
+            --info: 14 165 233; /* Sky-500 */
+            --success: 34 197 94; /* Green-500 */
+            --warning: 251 191 36; /* Amber-400 */
+            --error: 239 68 68; /* Red-500 */
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgb(59 130 246 / 0.1) 0%, rgb(16 185 129 / 0.1) 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, rgb(59 130 246) 0%, rgb(16 185 129) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .glass-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-base-100">
+    <!-- Navigation -->
+    <div class="navbar bg-base-200 sticky top-0 z-50 shadow-sm">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                    </svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How it Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl font-bold text-primary">
+                <img src="logo/Bennu 1 01 Artboard 1 Copy.png" alt="Bennu Logo" class="h-45 w-auto">
+            </a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a href="#features" class="hover:text-primary">Features</a></li>
+                <li><a href="#how-it-works" class="hover:text-primary">How it Works</a></li>
+                <li><a href="#pricing" class="hover:text-primary">Pricing</a></li>
+                <li><a href="#contact" class="hover:text-primary">Contact</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <a href="#contact" class="btn btn-primary">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero min-h-screen hero-gradient relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" viewBox="0 0 100 100" fill="none">
+                <defs>
+                    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100" height="100" fill="url(#grid)" />
+            </svg>
+        </div>
+        
+        <div class="hero-content text-center relative z-10">
+            <div class="max-w-5xl">
+                <!-- Visual Elements -->
+                <div class="mb-12 relative">
+                    <div class="flex justify-center items-center gap-8 mb-8">
+                        <!-- Student Icon -->
+                        <div class="w-20 h-20 bg-primary/20 rounded-2xl flex items-center justify-center transform -rotate-6 hover:rotate-0 transition-transform duration-300">
+                            <i class="fas fa-user-graduate text-3xl text-primary"></i>
+                        </div>
+                        
+                        <!-- Central Brain/AI Icon -->
+                        <div class="w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl flex items-center justify-center shadow-2xl border-2 border-white/50">
+                            <div class="relative">
+                                <i class="fas fa-brain text-5xl text-gradient"></i>
+                                <div class="absolute -top-2 -right-2 w-6 h-6 bg-secondary rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Book/Curriculum Icon -->
+                        <div class="w-20 h-20 bg-secondary/20 rounded-2xl flex items-center justify-center transform rotate-6 hover:rotate-0 transition-transform duration-300">
+                            <i class="fas fa-book-open text-3xl text-secondary"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Connection Lines -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-1 opacity-30">
+                        <div class="h-px bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+                    </div>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-gradient leading-tight">
+                    Your Personal Academic AI Mind
+                </h1>
+                
+                <p class="text-xl md:text-2xl mb-8 text-base-content/80 max-w-3xl mx-auto leading-relaxed">
+                    Powered by <span class="font-semibold text-primary">optimized top-notch AI models</span>, Bennu learns your university's AI curriculum and provides contextually relevant answers within your current academic scope. Experience next-generation AI learning that adapts to your educational journey.
+                </p>
+                
+                <div class="mb-12">
+                    <a href="#contact" class="btn btn-primary btn-lg px-8 py-4 text-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-calendar mr-3"></i>
+                        Request a Demo
+                    </a>
+                    <p class="text-base-content/60 mt-4">See our AI mind in action • Experience optimized AI learning</p>
+                </div>
+                
+                <!-- Updated Stats with Glass Effect -->
+                <div class="stats stats-vertical lg:stats-horizontal shadow-2xl mt-8 glass-card">
+                    <div class="stat">
+                        <div class="stat-figure text-primary">
+                            <i class="fas fa-university text-3xl"></i>
+                        </div>
+                        <div class="stat-title text-base-content/60">Universities & Schools</div>
+                        <div class="stat-value text-primary text-3xl">3+</div>
+                        <div class="stat-desc text-base-content/50">Integrated platforms</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-figure text-secondary">
+                            <i class="fas fa-users text-3xl"></i>
+                        </div>
+                        <div class="stat-title text-base-content/60">Active Students</div>
+                        <div class="stat-value text-secondary text-3xl">150+</div>
+                        <div class="stat-desc text-base-content/50">Learning daily</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-figure text-accent">
+                            <i class="fas fa-chart-line text-3xl"></i>
+                        </div>
+                        <div class="stat-title text-base-content/60">Response Rate</div>
+                        <div class="stat-value text-accent text-3xl">95%</div>
+                        <div class="stat-desc text-base-content/50">Question accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-base-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Why Choose Bennu's AI Mind?</h2>
+                <p class="text-xl text-base-content/70 max-w-2xl mx-auto">
+                    Our advanced AI models understand your academic context and deliver intelligent AI learning experiences tailored to your current coursework
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card bg-base-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="card-body text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-primary/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-book-open text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="card-title justify-center">AI Curriculum Intelligence</h3>
+                        <p class="text-base-content/70">
+                            Our AI mind learns your specific university AI curriculum and course materials using optimized top-notch AI models
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card bg-base-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="card-body text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-secondary/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-crosshairs text-2xl text-secondary"></i>
+                        </div>
+                        <h3 class="card-title justify-center">AI-Powered Scope Control</h3>
+                        <p class="text-base-content/70">
+                            Advanced AI models ensure answers stay within your current academic scope, providing focused AI learning experiences
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card bg-base-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="card-body text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-accent/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-bolt text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="card-title justify-center">Lightning-Fast AI Responses</h3>
+                        <p class="text-base-content/70">
+                            Optimized top-notch AI models deliver instant, accurate responses to your academic questions, powered by advanced AI learning
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card bg-base-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="card-body text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-info/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-2xl text-info"></i>
+                        </div>
+                        <h3 class="card-title justify-center">Privacy First</h3>
+                        <p class="text-base-content/70">
+                            Your questions and data remain secure with enterprise-grade privacy protection
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card bg-base-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="card-body text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-warning/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-sync-alt text-2xl text-warning"></i>
+                        </div>
+                        <h3 class="card-title justify-center">Self-Learning AI</h3>
+                        <p class="text-base-content/70">
+                            Our AI mind continuously learns and syncs with your course updates, evolving its AI curriculum knowledge throughout the semester
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card bg-base-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="card-body text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-success/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-chart-line text-2xl text-success"></i>
+                        </div>
+                        <h3 class="card-title justify-center">AI Learning Analytics</h3>
+                        <p class="text-base-content/70">
+                            Advanced AI models analyze your learning patterns and provide intelligent insights to optimize your AI learning journey
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-base-200">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">How Bennu's AI Mind Works</h2>
+                <p class="text-xl text-base-content/70">Simple steps to unlock the power of optimized top-notch AI models for your AI learning journey</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        1
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Connect Your AI Curriculum</h3>
+                    <p class="text-base-content/70">
+                        Link your university account or upload course materials. Our AI mind learns your specific AI curriculum using advanced AI models.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        2
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Engage with AI</h3>
+                    <p class="text-base-content/70">
+                        Ask any academic question. Our optimized top-notch AI models understand your course context and deliver intelligent AI learning responses.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-accent rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        3
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Master AI Learning</h3>
+                    <p class="text-base-content/70">
+                        Get personalized AI-powered explanations and track your progress as our AI mind helps you master your coursework.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 bg-base-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Choose Your Plan</h2>
+                <p class="text-xl text-base-content/70">Flexible pricing for students and institutions</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="card bg-base-200 shadow-lg">
+                    <div class="card-body text-center">
+                        <h3 class="card-title justify-center text-2xl mb-4">Student</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$9</span>
+                            <span class="text-base-content/70">/month</span>
+                        </div>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-success mr-2"></i>
+                                Unlimited questions
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-success mr-2"></i>
+                                5 courses maximum
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-success mr-2"></i>
+                                Basic progress tracking
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-success mr-2"></i>
+                                Email support
+                            </li>
+                        </ul>
+                        <div class="card-actions justify-center">
+                            <button class="btn btn-outline btn-primary w-full">Choose Plan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-primary text-primary-content shadow-xl scale-105">
+                    <div class="card-body text-center">
+                        <div class="badge badge-secondary mb-2">Most Popular</div>
+                        <h3 class="card-title justify-center text-2xl mb-4">Pro Student</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$19</span>
+                            <span class="text-primary-content/70">/month</span>
+                        </div>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                Unlimited questions
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                Unlimited courses
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                Advanced analytics
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                Priority support
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                Study group features
+                            </li>
+                        </ul>
+                        <div class="card-actions justify-center">
+                            <button class="btn btn-secondary w-full">Choose Plan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-base-200 shadow-lg">
+                    <div class="card-body text-center">
+                        <h3 class="card-title justify-center text-2xl mb-4">Institution</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">Custom</span>
+                        </div>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-success mr-2"></i>
+                                Unlimited students
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-success mr-2"></i>
+                                Custom integrations
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-success mr-2"></i>
+                                Advanced reporting
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-success mr-2"></i>
+                                Dedicated support
+                            </li>
+                            <li class="flex items-center justify-center">
+                                <i class="fas fa-check text-success mr-2"></i>
+                                SSO integration
+                            </li>
+                        </ul>
+                        <div class="card-actions justify-center">
+                            <button class="btn btn-outline btn-primary w-full">Contact Sales</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-base-200">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Connect with Our AI Team</h2>
+                <p class="text-xl text-base-content/70">Ready to explore AI learning? Our AI experts are here to help you get started.</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="form-control">
+                                    <label class="label">
+                                        <span class="label-text font-medium">First Name</span>
+                                    </label>
+                                    <input type="text" placeholder="John" class="input input-bordered w-full" required>
+                                </div>
+                                <div class="form-control">
+                                    <label class="label">
+                                        <span class="label-text font-medium">Last Name</span>
+                                    </label>
+                                    <input type="text" placeholder="Doe" class="input input-bordered w-full" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">Email</span>
+                                </label>
+                                <input type="email" placeholder="john@university.edu" class="input input-bordered w-full" required>
+                            </div>
+                            
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">University/Organization</span>
+                                </label>
+                                <input type="text" placeholder="Harvard University" class="input input-bordered w-full">
+                            </div>
+                            
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">Subject</span>
+                                </label>
+                                <select class="select select-bordered w-full">
+                                    <option disabled selected>Choose a topic</option>
+                                    <option>General Inquiry</option>
+                                    <option>Pricing & Plans</option>
+                                    <option>Technical Support</option>
+                                    <option>Partnership</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">Message</span>
+                                </label>
+                                <textarea class="textarea textarea-bordered h-32" placeholder="Tell us how we can help you..."></textarea>
+                            </div>
+                            
+                            <div class="form-control">
+                                <button type="submit" class="btn btn-primary w-full">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="divider">OR</div>
+                        
+                        <div class="text-center">
+                            <p class="text-base-content/70 mb-4">Reach us directly at:</p>
+                            <a href="mailto:info@bennu-edu.com" class="btn btn-outline btn-primary">
+                                <i class="fas fa-envelope mr-2"></i>
+                                info@bennu-edu.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
+        <nav class="grid grid-flow-col gap-4">
+            <a href="#features" class="link link-hover">Features</a>
+            <a href="#pricing" class="link link-hover">Pricing</a>
+            <a href="#contact" class="link link-hover">Contact</a>
+            <a href="privacy.html" class="link link-hover">Privacy Policy</a>
+        </nav>
+        <aside>
+            <div class="flex items-center justify-center gap-2 mb-2">
+                <img src="logo/Bennu 1 01 Artboard 1 Copy.png" alt="Bennu Logo" class="h-15 w-auto">
+                <span class="font-bold"></span>
+            </div>
+            <p>© 2025 Bennu. All rights reserved.</p>
+        </aside>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('backdrop-blur-md', 'bg-base-200/80');
+            } else {
+                navbar.classList.remove('backdrop-blur-md', 'bg-base-200/80');
+            }
+        });
+    </script>
+</body>
+</html>
